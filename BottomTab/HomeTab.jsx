@@ -8,15 +8,23 @@ import {
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const HomeTab = (props) => {
+const HomeTab = nav => {
   const [textInput, setTextInput] = React.useState('');
   const [result, setResult] = React.useState(' ');
+  const [languageTo, setLanguageTo] = React.useState('en');
+  const [languageFrom, setLanguageFrom] = React.useState('ta');
+
   return (
     <View style={styles.container}>
       <View style={styles.languageContainer}>
         <TouchableOpacity
           style={styles.languageOptions}
-          onPress={() => props.navigation.navigate('languageSelectScreen') }>
+          onPress={() =>
+            nav.navigation.navigate('languageSelectScreen', {
+              title: 'language from',
+              selected: languageFrom,
+            })
+          }>
           <Text style={styles.languages}>English</Text>
         </TouchableOpacity>
 
@@ -24,7 +32,12 @@ const HomeTab = (props) => {
 
         <TouchableOpacity
           style={styles.languageOptions}
-          onPress={() => props.navigation.navigate('languageSelectScreen')}>
+          onPress={() =>
+            nav.navigation.navigate('languageSelectScreen', {
+              title: 'language from',
+              selected: languageTo,
+            })
+          }>
           <Text style={styles.languages}>Tamil</Text>
         </TouchableOpacity>
       </View>
@@ -47,7 +60,7 @@ const HomeTab = (props) => {
       </View>
 
       <View style={styles.resultContainer}>
-        <Text style={styles.resultant}>Some results</Text>
+        <Text style={styles.resultant}>{result}</Text>
 
         <TouchableOpacity disabled={result === ''} style={styles.iconContainer}>
           <Icon
@@ -57,7 +70,7 @@ const HomeTab = (props) => {
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.historyContainer}></View>
+      <View style={styles.historyContainer} />
     </View>
   );
 };
@@ -129,6 +142,5 @@ const styles = StyleSheet.create({
   historyContainer: {
     flex: 1,
     padding: 10,
-   
   },
 });
