@@ -5,27 +5,36 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const HomeTab = nav => {
+const HomeTab = props => {
+  const params = props.route.params || {};
+
   const [textInput, setTextInput] = React.useState('');
   const [result, setResult] = React.useState(' ');
   const [languageTo, setLanguageTo] = React.useState('en');
   const [languageFrom, setLanguageFrom] = React.useState('ta');
-
+  useEffect(() => {
+    if (params.languageTo) {
+      setLanguageTo(params.languageTo);
+    }
+    if (params.languageFrom) {
+      setLanguageFrom(params.languageFrom);
+    }
+  }, [params.languageTo, params.languageFrom]);
   return (
     <View style={styles.container}>
       <View style={styles.languageContainer}>
         <TouchableOpacity
           style={styles.languageOptions}
           onPress={() =>
-            nav.navigation.navigate('languageSelectScreen', {
+            props.navigation.navigate('languageSelectScreen', {
               title: 'language from',
               selected: languageFrom,
             })
           }>
-          <Text style={styles.languages}>English</Text>
+          <Text style={styles.languages}>english</Text>
         </TouchableOpacity>
 
         <Icon style={styles.arrow} name="arrowright" size={20} color="gray" />
@@ -33,7 +42,7 @@ const HomeTab = nav => {
         <TouchableOpacity
           style={styles.languageOptions}
           onPress={() =>
-            nav.navigation.navigate('languageSelectScreen', {
+            props.navigation.navigate('languageSelectScreen', {
               title: 'language from',
               selected: languageTo,
             })

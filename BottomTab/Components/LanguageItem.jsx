@@ -5,10 +5,7 @@ export default LanguageItem = props => {
   return (
     <TouchableOpacity style={styles.container}>
       <View style={styles.iconContainer}>
-      {
-        props.selected &&
-        <Icon name="check" size={20} color="green" />
-      }
+        {props.selected && <Icon name="check" size={20} color="green" />}
       </View>
       <Text style={styles.text}>{props.text}</Text>
     </TouchableOpacity>

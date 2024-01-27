@@ -30,6 +30,7 @@
     "react-native-screens": "^3.29.0",
     "react-native-vector-icons": "^10.0.3",
     "react-navigation": "^4.4.4",
+    "react-navigation-header-buttons": "^11.1.1",
     "react-navigation-stack": "^2.10.4"
   },
   "devDependencies": {

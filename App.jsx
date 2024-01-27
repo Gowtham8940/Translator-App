@@ -37,6 +37,8 @@ function App() {
           <Stack.Group
             screenOptions={{
               presentation: 'modal',
+              headerStyle: {backgroundColor: 'gold'},
+              headerTitleStyle: {color: 'black'},
             }}>
             <Stack.Screen
               name="languageSelectScreen"
